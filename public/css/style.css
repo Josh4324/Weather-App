@@ -1,0 +1,64 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+.nav {
+  background-color: rgb(111, 111, 245);
+  display: flex;
+  padding: 20px;
+  font-size: 18px;
+}
+
+.inner-nav {
+  display: flex;
+  width: 400px;
+  justify-content: space-around;
+}
+
+a {
+  text-decoration: none;
+}
+
+.search {
+  margin-left: auto;
+  margin-right: 200px;
+  border: none;
+}
+
+.city {
+  height: 30px;
+  border-radius: 10px;
+  padding-left: 10px;
+  width: 300px;
+}
+
+.cities {
+  margin-top: 100px;
+  display: flex;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: space-between;
+}
+
+.citi {
+  border-radius: 10px;
+  background-color: aquamarine;
+  padding: 20px;
+}
+
+.main {
+  display: flex;
+  margin-left: 20px;
+  margin-top:20px;
+}
+
+.innermain {
+  display: flex;
+}
+
+.temp {
+  font-size: 80px;
+}

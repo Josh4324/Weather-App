@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="main">
+    <% if (lagos) {%>
+    <div class="temp"><%= lagos.main.temp %></div>
+    <div>
+      <div><%= lagos.weather[0].main %></div>
+      <div class="innermain">
+        <div>
+          <div>Feels like <%= lagos.main.feels_like %> </div>
+          <div>Visibilty <%= lagos.visibilty %></div>
+        </div>
+        <div>
+          <div>Wind <%= lagos.wind.speed %></div>
+          <div>Humidity <%= lagos.main.humidity%> </div>
+        </div>
+        <div>
+          <div>Pressure <%= lagos.main.pressure%></div>
+          <div>Dew Point</div>
+        </div>
+      </div>
+    </div>
+    <% }; %>
+  </div>
+
+  <div class="cities">
+
+    <% if (data) {%>
+    <% data.forEach(city => { %>
+    <div class="citi">
+      <div> <%= city.name %></div>
+      <div> <img src=<%= "http://openweathermap.org/img/wn/" + city.weather[0].icon + "@2x" + ".png" %> alt=<%= city.weather[0].description %>> </div>
+      <div><%= city.weather[0].description %></div>
+      <div><%= city.main.temp %></div>
+    </div>
+    <% })}; %>
+  </div>
+</div>
