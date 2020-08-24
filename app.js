@@ -18,9 +18,6 @@ app.use(express.static("public"));
 
 app.get("/", homeController.home);
 
-/* app.get("/courses", homeController.showCourses);
-app.get("/contact", homeController.showSignUp);
-app.post("/contact", homeController.postedSignUpForm); */
 
 /* app.use(errorController.pageNotFoundError);
 app.use(errorController.internalServerError); */
