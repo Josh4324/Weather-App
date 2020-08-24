@@ -1,21 +1,27 @@
 <div class="container">
   <div class="main">
     <% if (lagos) {%>
-    <div class="temp"><%= lagos.main.temp %></div>
+
     <div>
-      <div><%= lagos.weather[0].main %></div>
+      <h3 class="lag"> <%= lagos.name %></h3>
+      <p class="temp"> <%= lagos.main.temp %><sup>&#8451</sup></p>
+    </div>
+    <div class="temp2">
+      <div class="desc">
+        <%= lagos.weather[0].description %>
+      </div>
       <div class="innermain">
         <div>
-          <div>Feels like <%= lagos.main.feels_like %> </div>
-          <div>Visibilty <%= lagos.visibilty %></div>
+          <div class="tb">Feels like <%= lagos.main.feels_like %><sup>&#8451</sup> </div>
+          <div>Visibilty <%= lagos.visibility %>mi</div>
         </div>
         <div>
-          <div>Wind <%= lagos.wind.speed %></div>
-          <div>Humidity <%= lagos.main.humidity%> </div>
+          <div class="tb">Wind Speed - <%= lagos.wind.speed %>mph</div>
+          <div>Wind Degree <%= lagos.wind.deg%><sup>&#176</sup> </div>
         </div>
         <div>
-          <div>Pressure <%= lagos.main.pressure%></div>
-          <div>Dew Point</div>
+          <div class="tb">Pressure <%= lagos.main.pressure%></div>
+          <div>Humidity <%= lagos.main.humidity%>% </div>
         </div>
       </div>
     </div>
@@ -28,9 +34,10 @@
     <% data.forEach(city => { %>
     <div class="citi">
       <div> <%= city.name %></div>
-      <div> <img src=<%= "http://openweathermap.org/img/wn/" + city.weather[0].icon + "@2x" + ".png" %> alt=<%= city.weather[0].description %>> </div>
-      <div><%= city.weather[0].description %></div>
-      <div><%= city.main.temp %></div>
+      <div> <img src=<%= "http://openweathermap.org/img/wn/" + city.weather[0].icon + "@2x" + ".png" %>
+          alt=<%= city.weather[0].description %>> </div>
+      <div class="city-desc"><%= city.weather[0].description %></div>
+      <div><%= city.main.temp %><sup>&#8451</sup></div>
     </div>
     <% })}; %>
   </div>

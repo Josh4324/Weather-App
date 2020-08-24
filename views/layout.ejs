@@ -1,36 +1,80 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=0.8, maximum-scale=1"
+    />
     <title>Weather Application</title>
     <link rel="shortcut icon" type="image/png" href="/images/icon.png" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
-</head>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
 
-<body>
+  <body>
     <div class="nav">
-        <div class="inner-nav">
-            <a href="/">
-                <span class="button">Home</span>
-            </a>
-            <a href="/courses">
-                <span class="button">Forecast</span>
-            </a>
-            <a href="/contact">
-                <span class="button">Map</span>
-            </a>
-        </div>
-        <div class="search">
-            <input type="search" class="city" name="city" placeholder="Enter name of city">
-        </div>
-
+      <div class="inner-nav">
+        <a href="/">
+          <span class="button">Home</span>
+        </a>
+        <a href="/map">
+          <span class="button">Map</span>
+        </a>
+      </div>
+      <div class="search">
+        <form class="form" action="/search" method="POST">
+          <input
+            type="search"
+            class="city"
+            name="city"
+            placeholder="Enter name of city"
+          />
+        </form>
+      </div>
     </div>
 
     <%- body %>
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1Ijoiam9zaDQzMjQiLCJhIjoiY2tiemoyYmN2MGJ6ODJ2bXJmM25pbjN1dSJ9.veWU3GwQOzzf0OSAA_TRNg';
+    var map = new mapboxgl.Map({
+    container: 'map', // container id
+    style: 'mapbox://styles/mapbox/streets-v11',
+    center: [3.0, 6.5], // starting position
+    zoom: 10 // starting zoom
+    });
 
-</body>
+    map.on("click", (e) => {
+        fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${e.lngLat.lat}&lon=${e.lngLat.lng}&appid=19a11427fbdef134247f7b46f2055963`)
+        .then((result) => result.json())
+        .then((data) => {
+            console.log(data)
+            document.querySelector('.detail').textContent = "";
+            document.querySelector('.place').textContent = data.name;
+            document.querySelector('.temp1').innerHTML = data.main.temp + "<sup>&#8451</sup>";
+            document.querySelector('.desc1').textContent = data.weather[0].description;
+            document.querySelector('.tb1').innerHTML = "Feels like " + data.main.feels_like + "<sup>&#8451</sup>"
+            document.querySelector('.vs').textContent = "Visibilty " +  data.visibility + "mi";
+            document.querySelector('.tb2').innerHTML = "Wind Speed " + data.wind.speed + "mph"
+            document.querySelector('.wd').innerHTML = "Wind Degree " + data.wind.deg + "<sup>&#176</sup>"
+            document.querySelector('.tb3').innerHTML = "Pressure " + data.main.pressure + "mph"
+            document.querySelector('.hd').innerHTML = "Humidity " + data.main.humidity + "%"
 
+        }).catch((err) => {
+            console.log(err)
+        })
+    })
+
+
+    
+    </script>
+  </body>
 </html>
