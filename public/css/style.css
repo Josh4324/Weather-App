@@ -96,7 +96,8 @@ a {
   display: flex;
   margin-top: 20px;
   justify-content: space-between;
-  width: 500px
+  width: 500px;
+  margin-left: 20px
 }
 
 .temp {
@@ -135,4 +136,8 @@ a {
   text-align: center;
   font-size: 30px;
   margin-top:30px
+}
+
+.none {
+  display: none;
 }

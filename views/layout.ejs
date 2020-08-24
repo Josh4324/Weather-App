@@ -57,7 +57,7 @@
         .then((result) => result.json())
         .then((data) => {
             console.log(data)
-            document.querySelector('.detail').textContent = "";
+            document.querySelector('.detail').classList.add("none")
             document.querySelector('.place').textContent = data.name;
             document.querySelector('.temp1').innerHTML = data.main.temp + "<sup>&#8451</sup>";
             document.querySelector('.desc1').textContent = data.weather[0].description;
