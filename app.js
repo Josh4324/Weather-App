@@ -26,10 +26,8 @@ app.use(layouts);
 app.use(express.static("public"));
 
 
-
 app.get("/", homeController.index, homeController.indexView);
 app.get("/map", homeController.mapView)
-app.post("/search", homeController.search, homeController.indexView);
 
 
 app.use(errorController.pageNotFoundError);

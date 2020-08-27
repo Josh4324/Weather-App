@@ -1,44 +1,66 @@
 <div class="container">
+
   <div class="main">
     <% if (lagos) {%>
+    <div class="class">
+      <div class="head">
+        <div> <img src=<%= "http://openweathermap.org/img/wn/" + lagos.weather[0].icon + "@2x" + ".png" %>
+            alt=<%= lagos.weather[0].description %> class="img"> </div>
+        <p class="temp-desc"><%= lagos.weather[0].description %></p>
+        <h3 class="lag"> <%= lagos.name %></h3>
+        <p class="temp"> <%= lagos.main.temp %><sup>&#176</sup></p>
+      </div>
+      <div class="temp2">
+        <div class="innermain">
+          <div>
+            <div class="tb">Feels like <%= lagos.main.feels_like %><sup>&#8451</sup></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sk-chase none">
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+    </div>
 
-    <div>
-      <h3 class="lag"> <%= lagos.name %></h3>
-      <p class="temp"> <%= lagos.main.temp %><sup>&#8451</sup></p>
+    <div class="notfound none">
+        <h3>Location not Found</h3>
     </div>
-    <div class="temp2">
-      <div class="desc">
-        <%= lagos.weather[0].description %>
-      </div>
-      <div class="innermain">
-        <div>
-          <div class="tb">Feels like <%= lagos.main.feels_like %><sup>&#8451</sup> </div>
-          <div>Visibilty <%= lagos.visibility %>mi</div>
-        </div>
-        <div>
-          <div class="tb">Wind Speed - <%= lagos.wind.speed %>mph</div>
-          <div>Wind Degree <%= lagos.wind.deg%><sup>&#176</sup> </div>
-        </div>
-        <div>
-          <div class="tb">Pressure <%= lagos.main.pressure%></div>
-          <div>Humidity <%= lagos.main.humidity%>% </div>
-        </div>
-      </div>
-    </div>
-    <% }; %>
+
+
+
+    <% } %>
+
   </div>
 
-  <div class="cities">
 
+
+
+
+  <div class="cities">
     <% if (data) {%>
-    <% data.forEach(city => { %>
-    <div class="citi">
-      <div> <%= city.name %></div>
-      <div> <img src=<%= "http://openweathermap.org/img/wn/" + city.weather[0].icon + "@2x" + ".png" %>
-          alt=<%= city.weather[0].description %>> </div>
-      <div class="city-desc"><%= city.weather[0].description %></div>
-      <div><%= city.main.temp %><sup>&#8451</sup></div>
-    </div>
-    <% })}; %>
+    <table  class="citi">
+      <% data.forEach(city => { %>
+        <tr>
+          <td>
+            <div class="citi-name"> <%= city.name %></div>
+          </td>
+          <td>
+            <div class="citi-temp"><%= city.main.temp %><sup>&#8451</sup></div>
+          </td>
+          <td>
+            <div> <img src=<%= "http://openweathermap.org/img/wn/" + city.weather[0].icon + "@2x" + ".png" %>
+                alt=<%= city.weather[0].description %> class="img2"> </div>
+          </td>
+          <td>
+            <div class="city-desc"><%= city.weather[0].description %></div>
+          </td>
+        </tr>
+      <% })}; %>
+    </table>
   </div>
 </div>

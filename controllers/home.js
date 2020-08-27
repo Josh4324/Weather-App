@@ -13,7 +13,7 @@ module.exports = {
         })
         .catch(error => {
           console.log(`Error fetching data: ${error.message}`);
-          next(error);
+          next();
         });
     },
 
@@ -28,19 +28,21 @@ module.exports = {
 
       const request1 = axios.get(req1);
       const request2 = axios.get(req2);
+
       axios.all([request1, request2])
       .then(axios.spread((...responses) => {
         const re1 = responses[0]
         const re2 = responses[1]
         res.locals.data = re2.data.list;
-        res.locals.lagos = re1.data
-        next();
+        if (re1.data){
+          res.locals.lagos = re1.data
+        }else{
+          res.locals.lagos = undefined
+        }
+        next()
       })) .catch(error => {
-        console.log(`Error fetching data: ${error.message}`);
-        next(error);
+        
       });
-       
-      
     },
     mapView: (req, res) => {
       res.render("map");
