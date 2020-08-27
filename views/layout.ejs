@@ -53,7 +53,7 @@
     });
 
     map.on("click", (e) => {
-        fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${e.lngLat.lat}&lon=${e.lngLat.lng}&appid=19a11427fbdef134247f7b46f2055963`)
+        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${e.lngLat.lat}&lon=${e.lngLat.lng}&appid=19a11427fbdef134247f7b46f2055963`)
         .then((result) => result.json())
         .then((data) => {
             console.log(data)
