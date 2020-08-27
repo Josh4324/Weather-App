@@ -2,6 +2,8 @@ let city = document.querySelector(".city");
 let main = document.querySelector(".class");
 let anim = document.querySelector(".sk-chase");
 let notfound = document.querySelector(".notfound");
+let mapd = document.querySelector(".mapd");
+let detail = document.querySelector(".detail")
 
 city.addEventListener("keyup", (evt) => {
     if (evt.keyCode === 13) {
@@ -43,9 +45,14 @@ map.addControl(
 );
 
 map.on("click", (e) => {
+    mapd.classList.add("none");
+    anim.classList.remove("none");
+    detail.classList.add("none");
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${e.lngLat.lat}&lon=${e.lngLat.lng}&appid=19a11427fbdef134247f7b46f2055963`)
         .then((result) => result.json())
         .then((data) => {
+            anim.classList.add("none");
+            mapd.classList.remove("none");
             document.querySelector('.detail').classList.add("none")
             document.querySelector('.img3').src = "https://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x" + ".png";
             document.querySelector('.place').textContent = data.name;
