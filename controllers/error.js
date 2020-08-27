@@ -18,6 +18,6 @@ module.exports = {
     let errorCode = httpStatus.INTERNAL_SERVER_ERROR;
     console.log(`ERROR occurred: ${error.stack}`);
     res.status(errorCode);
-    res.render("error");
+    res.render("error1");
   }
 };
