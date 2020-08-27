@@ -34,6 +34,14 @@ var map = new mapboxgl.Map({
     center: [3.0, 6.5], // starting position
     zoom: 10 // starting zoom
 });
+
+map.addControl(
+    new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        mapboxgl: mapboxgl
+    })
+);
+
 map.on("click", (e) => {
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${e.lngLat.lat}&lon=${e.lngLat.lng}&appid=19a11427fbdef134247f7b46f2055963`)
         .then((result) => result.json())
