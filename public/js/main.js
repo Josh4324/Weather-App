@@ -48,7 +48,7 @@ map.on("click", (e) => {
     mapd.classList.add("none");
     anim.classList.remove("none");
     detail.classList.add("none");
-    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${e.lngLat.lat}&lon=${e.lngLat.lng}&appid=19a11427fbdef134247f7b46f2055963`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${e.lngLat.lat}&lon=${e.lngLat.lng}&units=metric&appid=19a11427fbdef134247f7b46f2055963`)
         .then((result) => result.json())
         .then((data) => {
             anim.classList.add("none");
